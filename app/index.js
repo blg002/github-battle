@@ -1,5 +1,6 @@
 var React = require('react');
 var ReactDOM = require('react-dom');
+var PropTypes = require('prop-types');
 require('./index.css');
 
 
@@ -58,6 +59,13 @@ class Users extends React.Component {
       </div>
     )
   }
+}
+
+Users.propTypes = {
+  list: PropTypes.arrayOf(PropTypes.shape({
+    name: PropTypes.string.isRequired,
+    friend: PropTypes.bool.isRequired,
+  })).isRequired
 }
 
 ReactDOM.render(
