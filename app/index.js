@@ -18,14 +18,25 @@ require('./index.css');
 // 	document.getElementById('app')
 // )
 
-function friendliness(arr, isAFriend){
-	return arr.filter(item => item.friend === isAFriend)
+function findFriends(arr){
+	return arr.filter(item => item.friend === true)
+}
+
+function findNonFriends(arr){
+  return arr.filter(item => item.friend === false)
+}
+
+function getFriendData(arr) {
+  return {
+    friends: findFriends(arr),
+    nonFriends: findNonFriends(arr)
+  }
 }
 
 class Users extends React.Component {
   render() {
-  	const friends = friendliness(this.props.list, true);
-  	const nonFriends = friendliness(this.props.list, false);
+  	const friends = getFriendData(this.props.list).friends;
+  	const nonFriends = getFriendData(this.props.list).nonFriends;
 
     return (
       <div>
