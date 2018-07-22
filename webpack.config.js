@@ -24,18 +24,7 @@ var config = {
       template: 'app/index.html'
     })
   ],
-  mode: "development"
-};
-
-if (process.env.NODE_ENV === 'production') {
-  config.plugins.push(
-    new webpack.DefinePlugin({
-      'process.env': {
-        'NODE_ENV': JSON.stringify(process.env.NODE_ENV)
-      }
-    }),
-    new webpack.optimize.UglifyJsPlugin()
-  );
+  mode: process.env.NODE_ENV === 'production' ? 'production' : 'development'
 };
 
 module.exports = config
