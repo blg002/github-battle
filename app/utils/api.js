@@ -2,11 +2,11 @@ var axios = require('axios');
 
 var id = "YOUR_CLIENT_ID";
 var sec = "YOUR_SECRET_ID";
-var param = "?client_id=" + id + "&client_secret=" + sec;
+var params = "?client_id=" + id + "&client_secret=" + sec;
 
 
 function getProfile (username) {
-	return axios.get('https://api.github.com/users/' + username + params);
+	return axios.get('https://api.github.com/users/' + username + params)
 		.then(function (user) {
 			return user.data;
 		})
@@ -36,8 +36,8 @@ function handleError (error) {
 
 function getUserData (player) {
 	return axios.all([
-		getProfile(player);
-		getRepos(player);
+		getProfile(player),
+		getRepos(player)
 	]).then(function (data) {
 		var profile = data[0];
 		var repos = data[1];
